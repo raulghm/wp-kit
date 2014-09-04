@@ -1,1 +1,0 @@
-var test;test=function(){return void 0};
