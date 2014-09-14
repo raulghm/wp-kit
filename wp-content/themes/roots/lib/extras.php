@@ -13,6 +13,86 @@
 //     register_post_type( 'custom', $args );
 // }
 
+/* ------------------------------------------------------ */
+// Resize images
+// ex: echo resize_image(attachment_image(), 600);
+
+//GET IMAGE
+function post_image(){
+  global $post;
+  $image = '';
+
+  //Get the image from the post meta box
+  $image = get_post_meta($post->ID, 'post_image', true);
+  if($image) return $image;
+
+  //If the above doesn't exist, get the post thumbnail
+ $image = attachment_image();
+ if($image) return $image;
+
+  //If there is still no image, get the first image from the post
+  $image = get_first_image();
+  if($image) return $image;
+
+  // default image
+  $image = get_bloginfo('template_url') . "/assets/images/placeholder.jpg";
+  if($image) return $image;
+}
+
+//GET ATTACHMENT IMAGE
+function attachment_image(){
+  global $post;
+  $image = '';
+
+  // get the post thumbnail
+  $image_id = get_post_thumbnail_id($post->ID);
+  $image = wp_get_attachment_image_src($image_id, 'full');
+  $image = $image[0];
+  if($image) return $image;
+
+  // default image
+  $image = get_bloginfo('template_url') .'/assets/images/placeholder.jpg';
+  if($image) return $image;
+}
+
+
+//GET FIRST IMAGE FROM POST CONTENT
+function get_first_image(){
+  global $post, $posts;
+  $first_img = '';
+  ob_start();
+  ob_end_clean();
+  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+
+  $first_img="";
+
+  if(isset($matches[1][0]))
+    $first_img = $matches[1][0];
+
+  return $first_img;
+}
+
+//BUILD IMAGE RESIZE
+function resize_image($img='', $w=false, $h=false, $zc=1 ){
+
+  if($h)
+    $h = "&amp;h=$h";
+  else
+    $h = '';
+
+  if($w)
+    $w = "&amp;w=$w";
+  else
+    $w = '';
+
+  $image_url = bloginfo('template_url') . "/lib/rz/?src=" . $img . $h . $w;
+
+  return $image_url;
+
+}
+
+/* ------------------------------------------------------ */
+
 // add_action( 'init', 'register_custom_post_type' );
 
 /**
