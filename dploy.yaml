@@ -1,9 +1,0 @@
-live:
-  scheme: "ftp"
-  host: ""
-  user: ""
-  pass: ""
-  path:
-      local: ""
-      remote: "public_html/"
-  exclude: ["dploy.yaml", "package.json", "wp-content/themes/roots/_gulp/**"]

@@ -5,14 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>{{ wp_title('|', true, 'right') }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   {{ wp_head() }}
-
   {{ wp_footer() }}
-
-  <script>
-    var SITE_URL = '{{ site_url() }}';
-  </script>
+  <script>var SITE_URL = '{{ site_url() }}';</script>
 
 </head>
 

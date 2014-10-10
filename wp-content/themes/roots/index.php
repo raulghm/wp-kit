@@ -5,7 +5,7 @@
   <main class="index">
     <section>
 
-      <h1>index page!</h1>
+      <h1>¡Hola Wordpress!</h1>
 
     </section>
 
