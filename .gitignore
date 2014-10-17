@@ -35,6 +35,8 @@ sitemap.xml.gz
 wp-config.php
 wp-content/themes/roots/lib/rz/cache
 wp-content/plugins/wordpress-importer
+wp-content/plugins
+wordpress/wp-content/plugins
 
 wp-activate.php
 wp-blog-header.php
@@ -53,3 +55,7 @@ xmlrpc.php
 bower_components
 node_modules
 dist
+dploy.yaml
+cache
+vendor
+composer.lock

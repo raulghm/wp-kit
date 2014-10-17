@@ -1,0 +1,52 @@
+{
+    "name": "raulghm/wp-kit",
+    "description": "",
+    "authors": [
+        {
+            "name": "Raúl Hernández M.",
+            "email": "raulghm@gmail.com"
+        }
+    ],
+    "require": {
+        "wordpress": "4.0",
+        "fancyguy/webroot-installer": "1.1.0"
+    },
+    "require-dev": {
+        "wpackagist-plugin/debug-bar": "0.8.*"
+    },
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"http://wpackagist.org"
+        },
+        {
+            "type" : "package",
+            "package": {
+                "name" : "wordpress",
+                "type" : "webroot",
+                "version": "4.0.0",
+                "dist" : {
+                    "url" : "https://es.wordpress.org/wordpress-4.0-es_ES.zip",
+                    "type": "zip"
+                },
+                "source" : {
+                    "url" : "https://github.com/WordPress/WordPress",
+                    "type" : "git",
+                    "reference": "4.0"
+                },
+                "require" : {
+                    "fancyguy/webroot-installer": "1.1.0"
+                }
+            }
+        }
+    ],
+    "extra": {
+        "webroot-dir": "wordpress",
+        "webroot-package": "wordpress",
+        "installer-paths": {
+            "wordpress/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+            "wordpress/wp-content/themes/{$name}/": ["type:wordpress-theme"],
+            "wordpress/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"]
+        }
+    }
+}
